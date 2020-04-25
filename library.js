@@ -19,6 +19,8 @@ function addBookToLibrary(name, author, pages, read){
 
 function removeBook(clicked_id){
     myLibrary.splice(clicked_id,1);
+    clearLibraryRender();
+    renderLibrary();
 }
 
 // Takes new book info from HTML form
@@ -79,10 +81,10 @@ function renderLibrary(){
 }
 
 function clearLibraryRender(){
-    for (let i = 0; i < myLibrary.length-1; i++){
-        let bookDiv = document.getElementById("book" + i);
-        bookDiv.parentNode.removeChild(bookDiv);
-    }    
+    let bookDiv = document.getElementsByClassName("book");
+    while (bookDiv.length > 0){
+        bookDiv[0].parentNode.removeChild(bookDiv[0]);
+    }
 }
 
 // test books
