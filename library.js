@@ -17,6 +17,10 @@ function addBookToLibrary(name, author, pages, read){
     myLibrary.push(new Book(name, author, pages, read));
 }
 
+function removeBook(clicked_id){
+    myLibrary.splice(clicked_id,1);
+}
+
 // Takes new book info from HTML form
 function newBookFromForm(){
     let name = document.getElementById("title").value;
@@ -62,6 +66,13 @@ function renderLibrary(){
         read.innerHTML = myLibrary[i].read;
         read.setAttribute("id", "read");
         bookDiv.appendChild(read);
+
+        let removeBtn = document.createElement("button");
+        removeBtn.innerHTML = "Remove";
+        removeBtn.setAttribute("id", i);
+        removeBtn.setAttribute("class", "removeButton");
+        removeBtn.setAttribute("onclick", "removeBook(this.id)");
+        bookDiv.appendChild(removeBtn);
 
         document.getElementById("shelf").appendChild(bookDiv);
     }

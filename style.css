@@ -1,5 +1,8 @@
 /*
 Simple library app. Homework from The Odin Project. 
+Do what you want with it. -jitsedefault
+*//*
+Simple library app. Homework from The Odin Project. 
 Do what you want with it. -vilsl
 */
 
@@ -76,12 +79,18 @@ main {
     border-radius: 5px;
     flex: auto;
     min-width: 100px;
-    min-height: 200px;
     max-width: 300px;
-    max-height: 200px;
+    min-height: 100px;
+    max-height: 300px;
+    text-align: center;
 }
 
 .book p {
-    text-align: center;
-    line-height: 50px;
+    line-height: 40px;
+}
+
+.removeButton {
+    width: 70px;
+    height: 20px;
+    margin: 15px 0 5px 0;
 }
