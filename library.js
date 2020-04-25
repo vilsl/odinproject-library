@@ -17,8 +17,14 @@ function addBookToLibrary(name, author, pages, read){
     myLibrary.push(new Book(name, author, pages, read));
 }
 
+// Takes input from HTML form
+function newBookFromForm(name, author, pages, read){
+
+}
+
 // Displays the books
-function render(){
+function renderLibrary(){
+    clearLibraryRender();
     for (let i = 0; i < myLibrary.length; i++){
         let bookDiv = document.createElement("div");
         bookDiv.setAttribute("id", "book" + i);
@@ -35,7 +41,7 @@ function render(){
         bookDiv.appendChild(author);
 
         let pages = document.createElement("p");
-        pages.innerHTML = myLibrary[i].pages;
+        pages.innerHTML = "Pages: " +  myLibrary[i].pages;
         pages.setAttribute("id", "pages");
         bookDiv.appendChild(pages);
 
@@ -48,6 +54,10 @@ function render(){
     }
 }
 
+function clearLibraryRender(){
+    return;
+}
+
 // test books
 addBookToLibrary("totallybook","unnamed",23, "Not read");
 addBookToLibrary("yeeehaw","unna333med",235, "Read");
@@ -55,4 +65,4 @@ addBookToLibrary("neinenen","unnaddmed",234, "Not read");
 addBookToLibrary("raaaaaaaaaaa","unnamedwed",2322, "Read");
 addBookToLibrary("testbeeeeeeeeeeeeook5","unnaddmed",232, "Read");
 
-render();
+renderLibrary();
