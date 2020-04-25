@@ -1,6 +1,6 @@
 /*
 Simple library app. Homework from The Odin Project. 
-Do what you want with it. -jitsedefault
+Do what you want with it. -vilsl
 */
 
 let myLibrary = [];
@@ -17,14 +17,27 @@ function addBookToLibrary(name, author, pages, read){
     myLibrary.push(new Book(name, author, pages, read));
 }
 
-// Takes input from HTML form
-function newBookFromForm(name, author, pages, read){
+// Takes new book info from HTML form
+function newBookFromForm(){
+    let name = document.getElementById("title").value;
+    let author = document.getElementById("author").value;
+    let pages = document.getElementById("pages").value;
+    let read;
+    if (document.getElementById("read").checked == true){
+        read = "Read";
+    }
+    else {
+        read = "Not read";
+    }
 
+    addBookToLibrary(name, author, pages, read);
+    document.getElementById("newBookForm").reset();
+    clearLibraryRender();
+    renderLibrary();
 }
 
 // Displays the books
 function renderLibrary(){
-    clearLibraryRender();
     for (let i = 0; i < myLibrary.length; i++){
         let bookDiv = document.createElement("div");
         bookDiv.setAttribute("id", "book" + i);
@@ -55,7 +68,10 @@ function renderLibrary(){
 }
 
 function clearLibraryRender(){
-    return;
+    for (let i = 0; i < myLibrary.length-1; i++){
+        let bookDiv = document.getElementById("book" + i);
+        bookDiv.parentNode.removeChild(bookDiv);
+    }    
 }
 
 // test books
