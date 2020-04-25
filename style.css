@@ -1,8 +1,5 @@
 /*
 Simple library app. Homework from The Odin Project. 
-Do what you want with it. -jitsedefault
-*//*
-Simple library app. Homework from The Odin Project. 
 Do what you want with it. -vilsl
 */
 
@@ -16,7 +13,7 @@ h1 {
     font-size: 30px;
 }
 
-button, input[type=submit] {
+button, input[type=button] {
     background-color: #ebebeb;
     color: #5d5d5d;
     border-radius: 5px;
@@ -45,7 +42,6 @@ nav {
     position: fixed;
     height: 100%;
     width: 200px;
-    border: 1px solid red;
     z-index: 1;
     padding-top: 20px;
 }
@@ -55,16 +51,19 @@ nav p, h1 {
 }
 
 #newBookForm {
-    margin: 20px;
-    border: 1px solid green;
+    margin: 30px 20px;
     text-align: center;
+}
+
+#newBookButton {
+    width: 120px;
+    height: 30px;
 }
 
 main {
     margin-left: 200px;
     height: 100%;
     padding-top: 20px;
-    border: 1px solid blue;
 }
 
 #shelf {
@@ -90,7 +89,13 @@ main {
 }
 
 .removeButton {
-    width: 70px;
+    width: 80px;
     height: 20px;
-    margin: 15px 0 5px 0;
+    margin-bottom: 10px;
+}
+
+.readButton {
+    width: 80px;
+    height: 20px;
+    margin: 15px 0 10px 0;
 }

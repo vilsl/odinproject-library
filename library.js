@@ -23,6 +23,18 @@ function removeBook(clicked_id){
     renderLibrary();
 }
 
+function changeToRead(clicked_id){
+    myLibrary[clicked_id].read = "Read";
+    clearLibraryRender();
+    renderLibrary();
+}
+
+function changeToUnread(clicked_id){
+    myLibrary[clicked_id].read = "Not read";
+    clearLibraryRender();
+    renderLibrary();
+}
+
 // Takes new book info from HTML form
 function newBookFromForm(){
     let name = document.getElementById("title").value;
@@ -45,6 +57,7 @@ function newBookFromForm(){
 // Displays the books
 function renderLibrary(){
     for (let i = 0; i < myLibrary.length; i++){
+        // Displays information about the book
         let bookDiv = document.createElement("div");
         bookDiv.setAttribute("id", "book" + i);
         bookDiv.setAttribute("class", "book");
@@ -55,7 +68,7 @@ function renderLibrary(){
         bookDiv.appendChild(title);
 
         let author = document.createElement("p");
-        author.innerHTML = myLibrary[i].author;
+        author.innerHTML = "by " + myLibrary[i].author;
         author.setAttribute("id", "author");
         bookDiv.appendChild(author);
 
@@ -69,13 +82,31 @@ function renderLibrary(){
         read.setAttribute("id", "read");
         bookDiv.appendChild(read);
 
+        // Button to toggle 'read' status of book object
+        let readToggleButton = document.createElement("button");
+        if (myLibrary[i].read == "Read"){
+            readToggleButton.innerHTML = "Not read";
+            readToggleButton.setAttribute("onclick", "changeToUnread(this.id)");
+        }
+        else {
+            readToggleButton.innerHTML = "Read";
+            readToggleButton.setAttribute("onclick", "changeToRead(this.id)");  
+        }
+        readToggleButton.setAttribute("id", i);
+        readToggleButton.setAttribute("class", "readButton");
+        bookDiv.appendChild(readToggleButton);
+
+        let buttonSpacer = document.createElement('br');
+        bookDiv.appendChild(buttonSpacer);
+
+        // Button to remove book from library
         let removeBtn = document.createElement("button");
         removeBtn.innerHTML = "Remove";
         removeBtn.setAttribute("id", i);
         removeBtn.setAttribute("class", "removeButton");
         removeBtn.setAttribute("onclick", "removeBook(this.id)");
         bookDiv.appendChild(removeBtn);
-
+        
         document.getElementById("shelf").appendChild(bookDiv);
     }
 }
@@ -88,10 +119,10 @@ function clearLibraryRender(){
 }
 
 // test books
-addBookToLibrary("totallybook","unnamed",23, "Not read");
-addBookToLibrary("yeeehaw","unna333med",235, "Read");
-addBookToLibrary("neinenen","unnaddmed",234, "Not read");
-addBookToLibrary("raaaaaaaaaaa","unnamedwed",2322, "Read");
-addBookToLibrary("testbeeeeeeeeeeeeook5","unnaddmed",232, "Read");
+addBookToLibrary("1984","George Orwell",233, "Read");
+addBookToLibrary("Lord of the Rings","J.R.R. Tolkien",999, "Not read");
+addBookToLibrary("Foundation","Isaac Asimov",234, "Read");
+addBookToLibrary("Dune","Frank Herbert",684, "Read");
+addBookToLibrary("Manufacturing Consent","Edward S. Herman",232, "Not read");
 
 renderLibrary();
